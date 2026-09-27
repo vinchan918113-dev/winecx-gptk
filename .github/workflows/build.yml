@@ -235,7 +235,7 @@ jobs:
           # here reads nixpkgs' propagated-build-inputs, so without them the
           # gstreamer probe fails on a missing glib-2.0 and configure quietly
           # drops winegstreamer
-          for p in freetype gnutls libpng zlib brotli bzip2 nettle libtasn1 libidn2 p11-kit libunistring gmp vulkan-headers ffmpeg-headless \
+          for p in freetype gnutls libpng zlib brotli bzip2 nettle libtasn1 libidn2 p11-kit libunistring gmp vulkan-headers ffmpeg-headless SDL2 \
                    glib orc \
                    gst_all_1.gstreamer gst_all_1.gst-plugins-base gst_all_1.gst-plugins-good \
                    gst_all_1.gst-plugins-bad gst_all_1.gst-libav; do
@@ -695,7 +695,7 @@ jobs:
 
           queue=""
           for d in $(cat store-outs.txt); do
-            for so in libfreetype.6.dylib libgnutls.30.dylib; do
+            for so in libfreetype.6.dylib libgnutls.30.dylib libSDL2-2.0.0.dylib; do
               [ -f "$d/lib/$so" ] && queue="$queue $d/lib/$so"
             done
           done
